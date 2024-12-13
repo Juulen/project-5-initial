@@ -6,14 +6,14 @@ public class SortingUtility {
     public static <T extends Comparable<T>> void gnomeSort(T[] data) {
 
         // TODO implement Gnome Sort here
-        int index = 0;
+        int pos = 0;
 
-        while (index < data.length) {
-            if (index == 0 || data[index].compareTo(data[index - 1]) >= 0) {
-                index++;
+        while (pos < data.length) {
+            if (pos == 0 || data[pos].compareTo(data[pos - 1]) >= 0) {
+                pos++;
             } else {
-                swap(data, index, index - 1);
-                index--;
+                swap(data, pos, pos - 1);
+                pos--;
             }
         }
     }
@@ -48,12 +48,12 @@ public class SortingUtility {
 
         // TODO implement Shell Sort here
         int n = data.length;
-        for (int gap = n / 2; gap > 0; gap /= 2) {
-            for (int i = gap; i < n; i++) {
+        for (int gaps = n / 2; gaps > 0; gaps /= 2) {
+            for (int i = gaps; i < n; i++) {
                 T temp = data[i];
                 int j;
-                for (j = i; j >= gap && data[j - gap].compareTo(temp) > 0; j -= gap) {
-                    data[j] = data[j - gap];
+                for (j = i; j >= gaps && data[j - gaps].compareTo(temp) > 0; j -= gaps) {
+                    data[j] = data[j - gaps];
                 }
                 data[j] = temp;
             }
